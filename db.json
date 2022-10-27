@@ -1,0 +1,65 @@
+{
+  "users": [
+    {
+      "userId": 1,
+      "userName": "Asamaporn",
+      "email": "bankingtest@gmail.com",
+      "password": "123456789",
+      "jwttoken": "testjsontoken",
+      "balance": 0,
+      "banking_id": [1]
+    },
+    {
+      "userId": 2,
+      "userName": "Somkiat",
+      "email": "somkiat@gmail.com",
+      "password": "123456789",
+      "jwttoken": "testjsontoken2",
+      "balance": 0,
+      "banking_id": [2]
+    }
+  ],
+  "bankings": [
+    {
+      "bankingId": 1,
+      "transactions": [
+        {
+          "transactionId": 1,
+          "action": "transfer",
+          "userActionId": 2,
+          "amount": 200,
+          "dateTime": "2022-10-24T18:00:00.00Z"
+        },
+        {
+          "transactionId": 2,
+          "action": "deposit",
+          "userActionId": 2,
+          "amount": 500,
+          "dateTime": "2022-10-24T18:01:00.00Z"
+        }
+      ],
+      "balance": 1000
+    },
+    {
+      "bankingId": 2,
+      "userId": 2,
+      "transactions": [
+        {
+          "transactionId": 1,
+          "action": "deposit",
+          "userActionId": 1,
+          "amount": 200,
+          "dateTime": "2022-10-24T18:00:00.00Z"
+        },
+        {
+          "transactionId": 2,
+          "action": "transfer",
+          "userActionId": 1,
+          "amount": 500,
+          "dateTime": "2022-10-24T18:01:00.00Z"
+        }
+      ],
+      "balance": 1250
+    }
+  ]
+}

@@ -7,7 +7,28 @@
       "password": "123456789",
       "jwttoken": "testjsontoken",
       "balance": 0,
-      "banking_id": [1]
+      "bookings": [
+        {
+          "bookingId": 1,
+          "transactions": [
+            {
+              "transactionId": 1,
+              "action": "transfer",
+              "toBookingId": 2,
+              "amount": 200,
+              "dateTime": "2022-10-24T18:00:00.00Z"
+            },
+            {
+              "transactionId": 2,
+              "action": "deposit",
+              "toBookingId": 2,
+              "amount": 500,
+              "dateTime": "2022-10-24T18:01:00.00Z"
+            }
+          ],
+          "balance": 1000
+        }
+      ]
     },
     {
       "userId": 2,
@@ -16,50 +37,29 @@
       "password": "123456789",
       "jwttoken": "testjsontoken2",
       "balance": 0,
-      "banking_id": [2]
-    }
-  ],
-  "bankings": [
-    {
-      "bankingId": 1,
-      "transactions": [
+      "banking_id": [
         {
-          "transactionId": 1,
-          "action": "transfer",
-          "userActionId": 2,
-          "amount": 200,
-          "dateTime": "2022-10-24T18:00:00.00Z"
-        },
-        {
-          "transactionId": 2,
-          "action": "deposit",
-          "userActionId": 2,
-          "amount": 500,
-          "dateTime": "2022-10-24T18:01:00.00Z"
+          "bankingId": 2,
+          "userId": 2,
+          "transactions": [
+            {
+              "transactionId": 1,
+              "action": "deposit",
+              "toBookingId": 1,
+              "amount": 200,
+              "dateTime": "2022-10-24T18:00:00.00Z"
+            },
+            {
+              "transactionId": 2,
+              "action": "transfer",
+              "toBookingId": 1,
+              "amount": 500,
+              "dateTime": "2022-10-24T18:01:00.00Z"
+            }
+          ],
+          "balance": 1250
         }
-      ],
-      "balance": 1000
-    },
-    {
-      "bankingId": 2,
-      "userId": 2,
-      "transactions": [
-        {
-          "transactionId": 1,
-          "action": "deposit",
-          "userActionId": 1,
-          "amount": 200,
-          "dateTime": "2022-10-24T18:00:00.00Z"
-        },
-        {
-          "transactionId": 2,
-          "action": "transfer",
-          "userActionId": 1,
-          "amount": 500,
-          "dateTime": "2022-10-24T18:01:00.00Z"
-        }
-      ],
-      "balance": 1250
+      ]
     }
   ]
 }

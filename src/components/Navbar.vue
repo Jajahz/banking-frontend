@@ -8,8 +8,11 @@
       <a class="flex items-center">
         <span
           class="self-center text-xl font-semibold whitespace-nowrap dark:text-white text-blue-700"
-          ><b>Banking</b></span
         >
+          <router-Link :to="{ name: 'Home' }">
+            <b>Banking</b>
+          </router-Link>
+        </span>
       </a>
       <button
         data-collapse-toggle="navbar-default"
@@ -41,22 +44,27 @@
             <a
               href="#"
               class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >Account Summary</a
             >
+              <router-Link :to="{ name: 'Home' }">
+                Account Summary
+              </router-Link>
+            </a>
           </li>
           <li>
             <a
               href="#"
               class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >Transfer</a
             >
+              <router-Link :to="{ name: 'Home' }"> Transfer </router-Link>
+            </a>
           </li>
           <li>
             <a
               href="#"
               class="block py-2 pr-4 pl-3 text-blue-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-fuchsia-500 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >Login</a
             >
+              <router-Link :to="{ name: 'Login' }"> Login </router-Link>
+            </a>
           </li>
         </ul>
       </div>

@@ -1,56 +1,73 @@
-<script setup></script>
+<script setup>
+import ApiService from '../composables/apiService'
+import Transaction from '../components/Transaction.vue'
+import { onBeforeMount, ref } from 'vue'
+import { computed } from '@vue/reactivity'
+
+// const users = ref()
+const user = ref()
+const transactions = ref()
+const selectedMenu = ref('all')
+
+// const getUsers = async () => {
+//   const response = await ApiService.getUsers()
+//   users.value = response.data
+// }
+
+const getUser = async () => {
+  //constant user because not have backend to login
+  const response = await ApiService.getUser(1)
+  user.value = response.data
+  transactions.value = response.data.transactions
+}
+
+onBeforeMount(async () => {
+  // await getUsers()
+  await getUser()
+})
+
+const transferBtn = () => {
+  selectedMenu.value = 'transfer'
+  console.log(selectedMenu.value)
+}
+
+const receiveBtn = () => {
+  selectedMenu.value = 'receive'
+  console.log(selectedMenu.value)
+}
+
+const filterMenu = computed(() => {
+  let result = transactions.value
+  if (selectedMenu.value == 'transfer') {
+    result = result.filter((r) => {
+      r.action == 'withdraw' || r.action == 'transfer'
+    })
+  } else if (selectedMenu.value == 'receive') {
+    result = result.filter((r) => {
+      r.action == 'deposit'
+    })
+  } else {
+    return result
+  }
+})
+</script>
 
 <template>
   <div class="mt-5">
-    <div class="overflow-x-auto relative">
-      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead
-          class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
-        >
-          <tr>
-            <th scope="col" class="py-3 px-6">Product name</th>
-            <th scope="col" class="py-3 px-6">Color</th>
-            <th scope="col" class="py-3 px-6">Category</th>
-            <th scope="col" class="py-3 px-6">Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <th
-              scope="row"
-              class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-            >
-              Apple MacBook Pro 17"
-            </th>
-            <td class="py-4 px-6">Sliver</td>
-            <td class="py-4 px-6">Laptop</td>
-            <td class="py-4 px-6">$2999</td>
-          </tr>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <th
-              scope="row"
-              class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-            >
-              Microsoft Surface Pro
-            </th>
-            <td class="py-4 px-6">White</td>
-            <td class="py-4 px-6">Laptop PC</td>
-            <td class="py-4 px-6">$1999</td>
-          </tr>
-          <tr class="bg-white dark:bg-gray-800">
-            <th
-              scope="row"
-              class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-            >
-              Magic Mouse 2
-            </th>
-            <td class="py-4 px-6">Black</td>
-            <td class="py-4 px-6">Accessories</td>
-            <td class="py-4 px-6">$99</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <h1 class="text-center text-xl text-blue-500">
+      <b>{{ user?.userName }}'s Account</b>
+    </h1>
+
+    <!-- <div class="text-center my-5">
+      <button class="btn bg-slate-400 p-2 mx-2 rounded-xl" @click="transferBtn">
+        Transfer Menu
+      </button>
+      <button class="btn bg-slate-400 p-2 mx-2 rounded-xl" @click="receiveBtn">
+        Receive Menu
+      </button>
+    </div> -->
+
+    <Transaction :transactions="filterMenu" />
   </div>
 </template>
 

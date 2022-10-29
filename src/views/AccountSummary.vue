@@ -67,7 +67,11 @@ const filterMenu = computed(() => {
       </button>
     </div> -->
 
-    <Transaction :transactions="filterMenu" />
+    <p class="text-right mr-16 mt-3 text-blue-400">
+      Your Balance: <b>{{ user.balance }} baht</b>
+    </p>
+
+    <Transaction :transactions="transactions" />
   </div>
 </template>
 

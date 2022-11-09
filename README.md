@@ -23,7 +23,7 @@ npm run db
 - Note create database
 ### Front-End
 - Not connect some API
-- Can not filter by transfer or receive meni
+- Can not filter by transfer or receive menu
 - Can not view who transfer to
 ### Infrastructure (Everything)
 - Dockerfile

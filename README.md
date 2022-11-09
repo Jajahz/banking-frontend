@@ -6,7 +6,7 @@
 npm install
 ```
 
-## ฏatabase setup by JSON-Server
+## Database setup by JSON-Server
 
 ```sh
 npm run db
